@@ -63,5 +63,6 @@ Browser-based text-to-speech assistance is not a replacement for a full operatin
 
 Noor-ul-Ain
 
-## Live Demo 
-Click here to try the Adaptive Accessibility Tool
+## 🌐 Live Demo
+
+[**Click here to view the live website**](https://noor-ul-ain655.github.io/Adaptive-Accessibility-Tool/)
