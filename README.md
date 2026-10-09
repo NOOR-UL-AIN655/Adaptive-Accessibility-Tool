@@ -62,3 +62,6 @@ Browser-based text-to-speech assistance is not a replacement for a full operatin
 ## Author
 
 Noor-ul-Ain
+
+## Live Demo 
+Click here to try the Adaptive Accessibility Tool
