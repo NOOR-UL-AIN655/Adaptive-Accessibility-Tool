@@ -62,8 +62,3 @@ Browser-based text-to-speech assistance is not a replacement for a full operatin
 ## Author
 
 Noor-ul-Ain
-
-## License
-
-This project is available for educational and portfolio purposes. Add a suitable open-source license if you intend to permit reuse and redistribution.
-
