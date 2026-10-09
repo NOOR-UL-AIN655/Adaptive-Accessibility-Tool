@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="An accessibility testing tool for keyboard navigation, focus management, screen reader support, color contrast and theme customization.">
+
+    <title>Adaptive Accessibility Tool</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="light">
+
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <div class="brand">
+            <span class="brand-icon" aria-hidden="true">A</span>
+
+            <div>
+                <h1>Adaptive Accessibility Tool</h1>
+                <p>Web accessibility testing dashboard</p>
+            </div>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="#overview">Overview</a>
+            <a href="#tests">Accessibility Tests</a>
+            <a href="#report">Audit Report</a>
+        </nav>
+
+        <!-- WEBSITE THEME SWITCHER -->
+        <div class="theme-controls">
+
+            <label for="theme-selector">Website Theme</label>
+
+            <select id="theme-selector" name="theme">
+                <option value="light">☀️ Light</option>
+                <option value="dark">🌙 Dark</option>
+                <option value="sepia">📖 Sepia</option>
+                <option value="high-contrast">◐ High Contrast</option>
+            </select>
+
+            <p id="theme-status"
+               class="visually-hidden"
+               role="status"
+               aria-live="polite">
+                Light theme selected
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" tabindex="-1">
+
+        <!-- OVERVIEW -->
+        <section id="overview"
+                 class="welcome-section"
+                 aria-labelledby="welcome-heading">
+
+            <p class="eyebrow">ACCESSIBILITY WORKSPACE</p>
+
+            <h2 id="welcome-heading">
+                Make your interface accessible
+            </h2>
+
+            <p>
+                Test keyboard navigation, focus behavior, screen reader
+                support, color contrast and common accessibility issues.
+                Customize the website theme to suit your needs.
+            </p>
+
+            <a class="primary-button" href="#tests">
+                Start accessibility testing
+            </a>
+
+        </section>
+
+
+        <!-- THEME INFORMATION -->
+        <section class="theme-info"
+                 aria-labelledby="theme-info-heading">
+
+            <h2 id="theme-info-heading">
+                Personalize Your Experience
+            </h2>
+
+            <p>
+                Choose a theme from the header to update the appearance
+                of the entire dashboard. Your selected theme will be
+                remembered on this browser.
+            </p>
+
+        </section>
+
+
+        <!-- AUDIT OVERVIEW -->
+        <section class="summary-section"
+                 aria-labelledby="summary-heading">
+
+            <h2 id="summary-heading">Audit Overview</h2>
+
+            <div class="summary-grid">
+
+                <article class="summary-card">
+                    <h3>Tests Run</h3>
+                    <p id="tests-count" class="summary-number">0</p>
+                </article>
+
+                <article class="summary-card">
+                    <h3>Passed</h3>
+                    <p id="passed-count" class="summary-number">0</p>
+                </article>
+
+                <article class="summary-card">
+                    <h3>Issues Found</h3>
+                    <p id="issues-count" class="summary-number">0</p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCESSIBILITY TESTS -->
+        <section id="tests" aria-labelledby="tests-heading">
+
+            <h2 id="tests-heading">Accessibility Tests</h2>
+
+            <p class="section-description">
+                Run individual checks and review their results below.
+            </p>
+
+            <div class="test-grid">
+
+
+                <!-- KEYBOARD NAVIGATION -->
+                <article class="test-card">
+
+                    <h3>Keyboard Navigation</h3>
+
+                    <p>
+                        Check whether interactive elements can be reached
+                        using a keyboard.
+                    </p>
+
+                    <button type="button" data-test="keyboard">
+                        Test Keyboard Navigation
+                    </button>
+
+                    <p id="keyboard-result"
+                       class="test-result"
+                       role="status"
+                       aria-live="polite">
+                        Not tested
+                    </p>
+
+                </article>
+
+
+                <!-- FOCUS MANAGEMENT -->
+                <article class="test-card">
+
+                    <h3>Focus Management</h3>
+
+                    <p>
+                        Try a dialog with contained focus and focus restoration.
+                    </p>
+
+                    <button type="button" id="open-dialog">
+                        Open Test Dialog
+                    </button>
+
+                    <p id="focus-result"
+                       class="test-result"
+                       role="status"
+                       aria-live="polite">
+                        Not tested
+                    </p>
+
+                </article>
+
+
+                <!-- SCREEN READER SUPPORT -->
+                <article class="test-card">
+
+                    <h3>Screen Reader Support</h3>
+
+                    <p>
+                        Inspect labels, image alternatives and accessible names.
+                        You can also listen to page content and get assistance
+                        with screen reader use.
+                    </p>
+
+                    <!-- EXISTING ACCESSIBILITY CHECK -->
+                    <button type="button" data-test="screenreader">
+                        Check Screen Reader Support
+                    </button>
+
+                    <p id="screenreader-result"
+                       class="test-result"
+                       role="status"
+                       aria-live="polite">
+                        Not tested
+                    </p>
+
+                    <hr>
+
+                    <!-- NEW SCREEN READER FEATURES -->
+                    <h4>Screen Reader Assistance</h4>
+
+                    <p>
+                        Use the following options to listen to the page
+                        or learn how to use a screen reader.
+                    </p>
+
+                    <button type="button" id="listen-page">
+                        Listen to Page
+                    </button>
+
+                    <button type="button" id="stop-speaking">
+                        Stop Speaking
+                    </button>
+
+                    <button type="button" id="screenreader-help">
+                        Screen Reader Help
+                    </button>
+
+                    <p id="speech-status"
+                       class="test-result"
+                       role="status"
+                       aria-live="polite">
+                        Ready to assist.
+                    </p>
+
+                </article>
+
+
+                <!-- COLOR CONTRAST -->
+                <article class="test-card">
+
+                    <h3>Color Contrast</h3>
+
+                    <p>
+                        Change colors and check text readability
+                        in the live preview.
+                    </p>
+
+                    <label for="foreground">Text color</label>
+                    <input type="color"
+                           id="foreground"
+                           value="#202124">
+
+                    <label for="background">Background color</label>
+                    <input type="color"
+                           id="background"
+                           value="#FFFFFF">
+
+                    <h4>Contrast Test Results</h4>
+
+                    <p id="contrast-ratio" aria-live="polite">
+                        Contrast Ratio: Not tested
+                    </p>
+
+                    <p id="normal-contrast-status"
+                       role="status"
+                       aria-live="polite">
+                        Normal Text (4.5:1): Not tested
+                    </p>
+
+                    <p id="large-contrast-status"
+                       role="status"
+                       aria-live="polite">
+                        Large Text (3:1): Not tested
+                    </p>
+
+                    <h4>Live Preview</h4>
+
+                    <div id="contrast-preview"
+                         style="color: #202124;
+                                background-color: #FFFFFF;
+                                padding: 20px;
+                                border-radius: 8px;">
+
+                        <p style="font-size: 16px;">
+                            This is normal sample text.
+                        </p>
+
+                        <p style="font-size: 24px; font-weight: bold;">
+                            This is large sample text.
+                        </p>
+
+                    </div>
+
+                    <button type="button" id="check-contrast">
+                        Check Color Contrast
+                    </button>
+
+                    <p id="contrast-result"
+                       class="test-result"
+                       role="status"
+                       aria-live="polite">
+                        Not tested
+                    </p>
+
+                </article>
+
+
+                <!-- COMMON UI ISSUES -->
+                <article class="test-card">
+
+                    <h3>Common UI Issues</h3>
+
+                    <p>
+                        Check the test page for missing labels, image alt text
+                        and other common issues.
+                    </p>
+
+                    <button type="button" data-test="ui">
+                        Scan UI Issues
+                    </button>
+
+                    <p id="ui-result"
+                       class="test-result"
+                       role="status"
+                       aria-live="polite">
+                        Not tested
+                    </p>
+
+                </article>
+
+
+                <!-- AUTOMATED ACCESSIBILITY SCAN -->
+                <article class="test-card">
+
+                    <h3>Automated Accessibility Scan</h3>
+
+                    <p>
+                        Scan this page for common accessibility problems
+                        using axe-core.
+                    </p>
+
+                    <button id="run-axe-test" type="button">
+                        Run Automated Scan
+                    </button>
+
+                    <p id="axe-result"
+                       role="status"
+                       aria-live="polite">
+                        Scan has not been run yet.
+                    </p>
+
+                    <div id="axe-details"></div>
+
+                </article>
+
+
+                <!-- ARROW KEY NAVIGATION -->
+                <article class="test-card">
+
+                    <h3>Arrow Key Navigation</h3>
+
+                    <p>
+                        Use arrow keys to navigate between the tabs below.
+                    </p>
+
+                    <div class="tab-list"
+                         role="tablist"
+                         aria-label="Accessibility test examples">
+
+                        <button type="button"
+                                role="tab"
+                                id="tab-one"
+                                aria-selected="true"
+                                aria-controls="panel-one"
+                                tabindex="0">
+                            Keyboard
+                        </button>
+
+                        <button type="button"
+                                role="tab"
+                                id="tab-two"
+                                aria-selected="false"
+                                aria-controls="panel-two"
+                                tabindex="-1">
+                            Screen Reader
+                        </button>
+
+                        <button type="button"
+                                role="tab"
+                                id="tab-three"
+                                aria-selected="false"
+                                aria-controls="panel-three"
+                                tabindex="-1">
+                            Contrast
+                        </button>
+
+                    </div>
+
+                    <div id="panel-one"
+                         role="tabpanel"
+                         aria-labelledby="tab-one"
+                         tabindex="0">
+                        Keyboard navigation testing.
+                    </div>
+
+                    <div id="panel-two"
+                         role="tabpanel"
+                         aria-labelledby="tab-two"
+                         tabindex="0"
+                         hidden>
+                        Screen reader support testing.
+                    </div>
+
+                    <div id="panel-three"
+                         role="tabpanel"
+                         aria-labelledby="tab-three"
+                         tabindex="0"
+                         hidden>
+                        Color contrast testing.
+                    </div>
+
+                    <p class="test-result">
+                        Use Left and Right Arrow keys on the tabs.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- AUDIT REPORT -->
+        <section id="report" aria-labelledby="report-heading">
+
+            <h2 id="report-heading">Accessibility Audit Report</h2>
+
+            <p>
+                Run the available tests to collect results. You can then
+                generate a report of the checks performed.
+            </p>
+
+            <button type="button"
+                    id="generate-report"
+                    class="primary-button">
+                Generate Audit Report
+            </button>
+
+            <div id="report-output"
+                 aria-live="polite"
+                 tabindex="-1">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            Adaptive Accessibility Tool · Accessibility testing workspace
+        </p>
+    </footer>
+
+
+    <!-- FOCUS MANAGEMENT TEST DIALOG -->
+    <dialog id="test-dialog"
+            aria-labelledby="dialog-title"
+            aria-describedby="dialog-description">
+
+        <h2 id="dialog-title">Test Dialog</h2>
+
+        <p id="dialog-description">
+            Use Tab and Shift + Tab to navigate within this dialog.
+            Focus should return to the opening button when it closes.
+        </p>
+
+        <label for="dialog-input">Enter a test value</label>
+
+        <input id="dialog-input" type="text">
+
+        <button type="button" id="close-dialog">
+            Close Dialog
+        </button>
+
+    </dialog>
+
+
+    <!-- ACCESSIBILITY SCANNER -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.3/axe.min.js"></script>
+
+    <!-- PROJECT JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

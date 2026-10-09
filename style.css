@@ -1,0 +1,646 @@
+
+/* =========================================
+   1. THEME VARIABLES
+========================================= */
+
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+
+    --page-bg: #f4f6fa;
+    --surface: #ffffff;
+    --surface-alt: #f4f6fa;
+    --text: #202124;
+    --muted: #4b5563;
+    --primary: #174ea6;
+    --primary-hover: #123b80;
+    --border: #c7ced8;
+    --success: #146c43;
+    --danger: #b42318;
+    --welcome-bg: #eaf1ff;
+    --welcome-border: #c7d7f5;
+    --welcome-heading: #173b73;
+    --welcome-text: #303f55;
+    --eyebrow: #174ea6;
+    --button-text: #ffffff;
+    --tab-bg: #ffffff;
+    --tab-text: #174ea6;
+    --report-item-bg: #f4f6fa;
+    --focus-color: #c2410c;
+    --input-bg: #ffffff;
+    --input-text: #202124;
+}
+
+/* DARK THEME */
+body[data-theme="dark"] {
+    --page-bg: #111827;
+    --surface: #1f2937;
+    --surface-alt: #273449;
+    --text: #f3f4f6;
+    --muted: #d1d5db;
+    --primary: #93c5fd;
+    --primary-hover: #bfdbfe;
+    --border: #4b5563;
+    --success: #86efac;
+    --danger: #fca5a5;
+    --welcome-bg: #1e3a5f;
+    --welcome-border: #37577d;
+    --welcome-heading: #eff6ff;
+    --welcome-text: #e5e7eb;
+    --eyebrow: #bfdbfe;
+    --button-text: #111827;
+    --tab-bg: #273449;
+    --tab-text: #bfdbfe;
+    --report-item-bg: #273449;
+    --focus-color: #fbbf24;
+    --input-bg: #273449;
+    --input-text: #f9fafb;
+}
+
+/* SEPIA THEME */
+body[data-theme="sepia"] {
+    --page-bg: #f4ecd8;
+    --surface: #fff8e8;
+    --surface-alt: #eee1c5;
+    --text: #433522;
+    --muted: #66563e;
+    --primary: #785329;
+    --primary-hover: #5b3d1c;
+    --border: #d5c3a0;
+    --success: #35613a;
+    --danger: #9b2929;
+    --welcome-bg: #eadcbd;
+    --welcome-border: #d5c3a0;
+    --welcome-heading: #4f371b;
+    --welcome-text: #54452f;
+    --eyebrow: #785329;
+    --button-text: #ffffff;
+    --tab-bg: #fff8e8;
+    --tab-text: #5b3d1c;
+    --report-item-bg: #eee1c5;
+    --focus-color: #8a3ffc;
+    --input-bg: #fff8e8;
+    --input-text: #433522;
+}
+
+/* HIGH CONTRAST THEME */
+body[data-theme="high-contrast"] {
+    --page-bg: #000000;
+    --surface: #000000;
+    --surface-alt: #111111;
+    --text: #ffffff;
+    --muted: #ffffff;
+    --primary: #ffff00;
+    --primary-hover: #ffffff;
+    --border: #ffffff;
+    --success: #00ff66;
+    --danger: #ff7777;
+    --welcome-bg: #000000;
+    --welcome-border: #ffff00;
+    --welcome-heading: #ffff00;
+    --welcome-text: #ffffff;
+    --eyebrow: #ffff00;
+    --button-text: #000000;
+    --tab-bg: #000000;
+    --tab-text: #ffff00;
+    --report-item-bg: #111111;
+    --focus-color: #00ffff;
+    --input-bg: #000000;
+    --input-text: #ffffff;
+}
+
+/* =========================================
+   2. GLOBAL STYLES
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    color: var(--text);
+    background: var(--page-bg);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+a {
+    color: var(--primary);
+}
+
+button,
+.primary-button {
+    display: inline-block;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 10px 16px;
+    background: var(--primary);
+    color: var(--button-text);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.primary-button:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: var(--button-text);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+/* =========================================
+   3. KEYBOARD FOCUS
+========================================= */
+
+:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 4px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    scroll-margin: 12px;
+}
+
+/* =========================================
+   4. SKIP LINK
+========================================= */
+
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1000;
+    padding: 10px 14px;
+    background: var(--surface);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    transform: translateY(-160%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* =========================================
+   5. HEADER AND NAVIGATION
+========================================= */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 22px 6%;
+    background: var(--surface);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--primary);
+    color: var(--button-text);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.brand p {
+    margin: 3px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.site-header nav a {
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* Theme dropdown */
+.theme-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 170px;
+}
+
+.theme-controls label {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+#theme-selector {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--input-text);
+    cursor: pointer;
+}
+
+#theme-selector option {
+    background: var(--input-bg);
+    color: var(--input-text);
+}
+
+/* Hide text visually but keep it available to screen readers */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* =========================================
+   6. MAIN LAYOUT
+========================================= */
+
+main {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 36px 0 56px;
+}
+
+section {
+    margin-bottom: 44px;
+    scroll-margin-top: 24px;
+}
+
+h2 {
+    margin-top: 0;
+    line-height: 1.3;
+}
+
+h3 {
+    line-height: 1.4;
+}
+
+.welcome-section {
+    padding: 38px;
+    border: 1px solid var(--welcome-border);
+    border-radius: 16px;
+    background: var(--welcome-bg);
+}
+
+.welcome-section h2 {
+    max-width: 700px;
+    margin-bottom: 12px;
+    color: var(--welcome-heading);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.welcome-section > p:not(.eyebrow) {
+    max-width: 720px;
+    color: var(--welcome-text);
+}
+
+.eyebrow {
+    color: var(--eyebrow);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.theme-info {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+.theme-info p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+/* =========================================
+   7. SUMMARY AND TEST CARDS
+========================================= */
+
+.summary-grid,
+.test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.summary-card,
+.test-card {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.summary-card h3,
+.test-card h3 {
+    margin-top: 0;
+}
+
+.summary-number {
+    margin: 4px 0 0;
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.section-description {
+    color: var(--muted);
+}
+
+.test-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.test-card > p {
+    margin: 0;
+}
+
+.test-card button {
+    max-width: 100%;
+}
+
+.test-result {
+    color: var(--muted);
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+}
+
+.test-result.success {
+    color: var(--success);
+    font-weight: 700;
+}
+
+.test-result.error {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+label {
+    display: block;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+/* Form controls */
+input[type="color"] {
+    display: block;
+    width: 100%;
+    max-width: 180px;
+    height: 44px;
+    padding: 3px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--input-bg);
+}
+
+input[type="text"],
+input:not([type="color"]):not([type="hidden"]),
+select,
+textarea {
+    color: var(--input-text);
+}
+
+.test-card input[type="color"] {
+    background: var(--input-bg);
+}
+
+/* Keep contrast preview colors selected by the user */
+#contrast-preview {
+    width: 100%;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   8. ACCESSIBLE TABS
+========================================= */
+
+.tab-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
+
+.tab-list button {
+    background: var(--tab-bg);
+    color: var(--tab-text);
+}
+
+.tab-list button[aria-selected="true"] {
+    background: var(--primary);
+    color: var(--button-text);
+}
+
+[role="tabpanel"] {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-alt);
+    color: var(--text);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   9. AUDIT REPORT
+========================================= */
+
+#report {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+#report-output {
+    margin-top: 20px;
+    overflow-wrap: anywhere;
+}
+
+#report-output:empty {
+    display: none;
+}
+
+.report-item {
+    padding: 12px;
+    margin: 10px 0;
+    border-left: 4px solid var(--primary);
+    background: var(--report-item-bg);
+    color: var(--text);
+}
+
+#report-output a {
+    display: inline-block;
+    margin: 12px 0;
+    font-weight: 700;
+}
+
+/* =========================================
+   10. DIALOG
+========================================= */
+
+dialog {
+    width: min(480px, calc(100% - 32px));
+    max-height: 85vh;
+    overflow: auto;
+    padding: 28px;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+dialog::backdrop {
+    background: rgb(0 0 0 / 65%);
+}
+
+dialog input[type="text"] {
+    display: block;
+    width: 100%;
+    margin: 8px 0 20px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: var(--input-text);
+}
+
+/* =========================================
+   11. FOOTER
+========================================= */
+
+footer {
+    padding: 22px;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    text-align: center;
+}
+
+/* =========================================
+   12. RESPONSIVE LAYOUT
+========================================= */
+
+@media (max-width: 850px) {
+    .summary-grid,
+    .test-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .site-header {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .summary-grid,
+    .test-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-header {
+        padding: 18px 4%;
+    }
+
+    .site-header nav {
+        gap: 12px;
+    }
+
+    .theme-controls {
+        width: 100%;
+    }
+
+    main {
+        width: 92%;
+        padding-top: 24px;
+    }
+
+    .welcome-section {
+        padding: 24px;
+    }
+
+    #report {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   13. REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
